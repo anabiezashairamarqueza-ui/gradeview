@@ -1,12 +1,14 @@
 """Report classes: show a ClassRecord as text or as a chart.
 
-Report is the parent class. TextReport and ChartReport inherit from it
-and each override generate() in their own way (polymorphism).
+Report is the parent class. TextReport and ChartReport inherit from it,
+and each one changes generate() in its own way (polymorphism).
 """
+
+import matplotlib.pyplot as plt
 
 
 class Report:
-    """Base class for all reports. Child classes must override generate()."""
+    """The parent class for all reports."""
 
     def __init__(self, record):
         """Create a report for a class record.
@@ -17,65 +19,49 @@ class Report:
         self._record = record
 
     def generate(self):
-        """Build the report. Child classes must override this method."""
-        raise NotImplementedError("Child classes must override generate()")
+        """Make the report. Each child class writes its own version."""
+        print("This is a general report. Use TextReport or ChartReport.")
 
 
 class TextReport(Report):
-    """A report printed as plain text."""
+    """A report printed as text."""
 
     def generate(self):
-        """Print a text summary of the class and return it as a string."""
+        """Print a summary of the class."""
         record = self._record
-        lines = [
-            f"Class report: {record.get_course_name()}",
-            f"Students: {len(record)}",
-            f"Class average: {record.class_average()}",
-            "",
-            "Top students:",
-        ]
-        for rank, student in enumerate(record.top_students(), start=1):
-            lines.append(f"  {rank}. {student.get_name()} - {student.average()} ({student.letter_grade()})")
+        print("Class report:", record.get_course_name())
+        print("Students:", len(record))
+        print("Class average:", record.class_average())
 
+        print()
+        print("Top students:")
+        rank = 1
+        for student in record.top_students():
+            print(f"  {rank}. {student.get_name()} - {student.average()} ({student.letter_grade()})")
+            rank = rank + 1
+
+        print()
         failing = record.failing_students()
-        lines.append("")
-        lines.append(f"Below passing ({record.PASSING_SCORE}): {len(failing)}")
+        print(f"Below passing ({record.PASSING_SCORE}):", len(failing))
         for student in failing:
-            lines.append(f"  - {student.get_name()} - {student.average()}")
-
-        text = "\n".join(lines)
-        print(text)
-        return text
+            print(f"  - {student.get_name()} - {student.average()}")
 
 
 class ChartReport(Report):
-    """A report drawn as a bar chart of each student's average."""
+    """A report shown as a bar chart."""
 
-    def generate(self, show=True):
-        """Draw a bar chart of student averages with a passing line.
+    def generate(self):
+        """Draw a bar chart of each student's average."""
+        names = []
+        averages = []
+        for student in self._record.get_students():
+            names.append(student.get_name())
+            averages.append(student.average())
 
-        Args:
-            show (bool, optional): Open the chart window. Defaults to True.
-
-        Returns:
-            matplotlib.figure.Figure: The chart, so it can be saved.
-        """
-        import matplotlib.pyplot as plt
-
-        students = self._record.get_students()
-        names = [student.get_name() for student in students]
-        averages = [student.average() for student in students]
-
-        fig, ax = plt.subplots(figsize=(8, 4))
-        ax.bar(names, averages, color="#4C72B0")
-        ax.axhline(self._record.PASSING_SCORE, color="#C44E52", linestyle="--", label="Passing")
-        ax.set_title(f"Student averages: {self._record.get_course_name()}")
-        ax.set_ylabel("Average score")
-        ax.set_ylim(0, 100)
-        ax.legend()
-        plt.setp(ax.get_xticklabels(), rotation=30, ha="right")
-        fig.tight_layout()
-
-        if show:
-            plt.show()
-        return fig
+        plt.bar(names, averages)
+        plt.axhline(self._record.PASSING_SCORE, color="red", linestyle="--", label="Passing")
+        plt.title("Student averages")
+        plt.ylabel("Average score")
+        plt.ylim(0, 100)
+        plt.legend()
+        plt.show()
