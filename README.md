@@ -79,7 +79,7 @@ classDiagram
 | Encapsulation | `Student` and `ClassRecord` keep their data private (`_scores`, `_students`) behind getter methods |
 | Inheritance | `TextReport` and `ChartReport` inherit from `Report` |
 | Polymorphism | Each report overrides `generate()` in its own way |
-| Dunder methods | `__repr__`, `__eq__`, `__lt__`, `__hash__`, `__len__` |
+| Dunder methods | `__repr__`, `__eq__`, `__lt__`, `__len__` |
 | Composition | A `ClassRecord` contains many `Student` objects |
 
 ## Contributors
