@@ -1,6 +1,6 @@
 # gradeview
 
-A simple Python library for analyzing student grades. Load a class record from a CSV file, then get averages, letter grades, top students, students below passing, and a bar chart.
+A Python library for analyzing student grades. Load a class record from a CSV file, then get averages, letter grades, top students, students below passing, and a bar chart.
 
 Built for the DS212 Object-Oriented Programming final project (DS2B-G5).
 
