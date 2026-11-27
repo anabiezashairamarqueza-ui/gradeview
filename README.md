@@ -29,6 +29,14 @@ ChartReport(record).generate()    # draws a bar chart
 
 The CSV needs a `name` column and a `student_id` column. Every other column is treated as a score from 0 to 100.
 
+## Sample data
+
+`sample_scores.csv` contains real, anonymized grades of the first 20 students in the Mathematics class of the UCI Student Performance dataset. The original grades use Portugal's 0–20 scale, so we multiplied them by 5 to get scores from 0 to 100. The columns `period1`, `period2` and `final` are the first-period, second-period and final grades (G1, G2 and G3 in the original data). The students had no names in the dataset, so they are labeled Student 01 to Student 20.
+
+Note: in Portugal the passing grade is 10 out of 20 (50 out of 100), while gradeview uses 75 by default, so most of these students show up as below passing.
+
+Source: Cortez, P. (2008). *Student Performance* [Dataset]. UCI Machine Learning Repository. https://doi.org/10.24432/C5TG7T (licensed under CC BY 4.0).
+
 ## Class diagram
 
 ```mermaid
