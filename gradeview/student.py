@@ -71,10 +71,11 @@ class Student:
             return "F"
 
     def ph_grade(self):
-        """Return the Philippine grade (1.0 to 5.0) based on the average.
+        """Return the USTP grade (1.0 to 5.0) based on the average.
 
+        This follows the grading table in the USTP Student Handbook:
         1.0 is the highest grade, 3.0 is the lowest passing grade,
-        and 5.0 means failed.
+        3.25 and 3.5 are conditional, and 3.75 and below mean failed.
         """
         avg = self.average()
         if avg >= 97:
@@ -95,6 +96,14 @@ class Student:
             return 2.75
         elif avg >= 75:
             return 3.0
+        elif avg >= 72:
+            return 3.25
+        elif avg >= 69:
+            return 3.5
+        elif avg >= 66:
+            return 3.75
+        elif avg >= 65:
+            return 4.0
         else:
             return 5.0
 
