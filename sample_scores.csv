@@ -1,6 +1,21 @@
-name,student_id,quiz1,quiz2,midterm,final
-Ana Santos,2024-0001,95,92,90,94
-Ben Cruz,2024-0002,78,80,74,79
-Carla Reyes,2024-0003,88,85,91,87
-Dan Lim,2024-0004,65,70,68,72
-Ella Garcia,2024-0005,82,79,85,80
+name,student_id,period1,period2,final
+Student 01,UCI-MAT-001,25,30,30
+Student 02,UCI-MAT-002,25,25,30
+Student 03,UCI-MAT-003,35,40,50
+Student 04,UCI-MAT-004,75,70,75
+Student 05,UCI-MAT-005,30,50,50
+Student 06,UCI-MAT-006,75,75,75
+Student 07,UCI-MAT-007,60,60,55
+Student 08,UCI-MAT-008,30,25,30
+Student 09,UCI-MAT-009,80,90,95
+Student 10,UCI-MAT-010,70,75,75
+Student 11,UCI-MAT-011,50,40,45
+Student 12,UCI-MAT-012,50,60,60
+Student 13,UCI-MAT-013,70,70,70
+Student 14,UCI-MAT-014,50,50,55
+Student 15,UCI-MAT-015,70,80,80
+Student 16,UCI-MAT-016,70,70,70
+Student 17,UCI-MAT-017,65,70,70
+Student 18,UCI-MAT-018,40,50,50
+Student 19,UCI-MAT-019,30,25,25
+Student 20,UCI-MAT-020,40,50,50
