@@ -70,6 +70,34 @@ class Student:
         else:
             return "F"
 
+    def ph_grade(self):
+        """Return the Philippine grade (1.0 to 5.0) based on the average.
+
+        1.0 is the highest grade, 3.0 is the lowest passing grade,
+        and 5.0 means failed.
+        """
+        avg = self.average()
+        if avg >= 97:
+            return 1.0
+        elif avg >= 94:
+            return 1.25
+        elif avg >= 91:
+            return 1.5
+        elif avg >= 88:
+            return 1.75
+        elif avg >= 85:
+            return 2.0
+        elif avg >= 82:
+            return 2.25
+        elif avg >= 79:
+            return 2.5
+        elif avg >= 76:
+            return 2.75
+        elif avg >= 75:
+            return 3.0
+        else:
+            return 5.0
+
     def __repr__(self):
         """Return how the student looks when printed."""
         return f"Student('{self._name}', average={self.average()})"
