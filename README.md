@@ -1,6 +1,6 @@
 # gradeview
 
-A Python library for analyzing student grades. Load a class record from a CSV file, then get averages, letter grades, top students, students below passing, and a bar chart.
+A Python library for analyzing student grades. Load a class record from a CSV file, then get averages, letter grades (A–F), Philippine grades (1.0–5.0), top students, students below passing, and a bar chart.
 
 Built for the DS212 Object-Oriented Programming final project (DS2B-G5).
 
@@ -22,6 +22,9 @@ record = ClassRecord.from_csv("sample_scores.csv", "DS212")
 print(record.class_average())     # average of the whole class
 print(record.top_students(3))     # the 3 highest averages
 print(record.failing_students())  # students below 75
+
+top = record.top_students(1)[0]
+print(top.letter_grade(), top.ph_grade())  # e.g. B 1.75
 
 TextReport(record).generate()     # prints a summary
 ChartReport(record).generate()    # draws a bar chart
@@ -50,6 +53,7 @@ classDiagram
     +add_score(score)
     +average() float
     +letter_grade() str
+    +ph_grade() float
     +__repr__() str
     +__eq__(other) bool
     +__lt__(other) bool
